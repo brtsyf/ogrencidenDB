@@ -1,20 +1,21 @@
-# Node'un resmi image'ını kullan
-FROM node:20
+# Node image
+FROM node:18
 
-# Uygulama klasörünü ayarla (container içinde)
-WORKDIR /app
-
-# package.json ve lock dosyasını kopyala
-COPY package*.json ./
+WORKDIR /src
 
 # Bağımlılıkları yükle
+COPY package*.json ./
 RUN npm install
 
-# src klasörünü ve diğer tüm dosyaları kopyala
+# Kodları kopyala
 COPY . .
+COPY prisma ./prisma
 
-# Uygulamanın dinleyeceği port
+# Prisma client'ı oluştur
+RUN npx prisma generate
+
+# Uygulamanın portu
 EXPOSE 3000
 
-# Uygulama başlatma komutu
-CMD ["npm", "run", "dev"]
+# Production başlatma: migrate + dev çalıştırma
+CMD npx prisma migrate deploy && npm run dev
