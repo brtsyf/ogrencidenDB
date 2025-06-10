@@ -1,19 +1,19 @@
 # Node'un resmi image'ını kullan
 FROM node:20
 
-# Uygulama dizini oluştur
-WORKDIR /src
+# Uygulama klasörünü ayarla (container içinde)
+WORKDIR /app
 
-# package.json ve package-lock.json'u kopyala
+# package.json ve lock dosyasını kopyala
 COPY package*.json ./
 
 # Bağımlılıkları yükle
 RUN npm install
 
-# Geri kalan tüm dosyaları kopyala
+# src klasörünü ve diğer tüm dosyaları kopyala
 COPY . .
 
-# Uygulama hangi portta çalışıyorsa o portu belirt
+# Uygulamanın dinleyeceği port
 EXPOSE 3000
 
 # Uygulama başlatma komutu
