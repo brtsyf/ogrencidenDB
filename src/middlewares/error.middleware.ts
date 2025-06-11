@@ -13,6 +13,9 @@ export const errorMiddleware = (err: any, req: any, res: any, next: any) => {
   if (err.name === "UserNotFoundError") {
     return res.status(404).json({ message: ErrorType.NOT_FOUND });
   }
+  if (err.name === "DB_ERROR") {
+    return res.status(500).json({ message: ErrorType.DB_ERROR });
+  }
   if (err.name === "UnauthorizedError") {
     return res.status(401).json({ message: ErrorType.UNAUTHORIZED });
   }

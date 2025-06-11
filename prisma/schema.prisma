@@ -23,7 +23,16 @@ model User {
   conversationsAsUser1 Conversation[] @relation("user1")
   conversationsAsUser2 Conversation[] @relation("user2")
   createdAt DateTime @default(now())
+  adverts Adverts[] @relation("advertOwner")
+}
 
+model Adverts {
+  id String @default(uuid()) @unique
+  name String
+  price String
+  description String
+  ownerID String
+  owner User @relation("advertOwner", fields:[ownerID],references:[id]) 
 }
 
 model Message {
