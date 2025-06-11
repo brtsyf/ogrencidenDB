@@ -22,6 +22,7 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
+    "pm2": "^6.0.8",
     "socket.io": "^4.8.1",
     "typescript": "^5.8.3",
     "zod": "^3.25.56"
@@ -33,6 +34,7 @@
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/morgan": "^1.9.10",
-    "prisma": "^6.9.0"
+    "prisma": "^6.9.0",
+    "tsx": "^4.20.1"
   }
 }

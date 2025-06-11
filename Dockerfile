@@ -18,4 +18,4 @@ RUN npx prisma generate
 EXPOSE 3000
 
 # Production başlatma: migrate + dev çalıştırma
-CMD npx prisma migrate deploy && npm run dev
+CMD npx prisma migrate deploy && npx pm2 start ecosystem.config.cjs && npx pm2 logs
