@@ -64,7 +64,7 @@ app.use("/", authRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(errorMiddleware);
 
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log(
     "Server is running on port 3000 && Swagger is working on http://localhost:3000/api-docs"
   );
