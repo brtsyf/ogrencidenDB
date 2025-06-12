@@ -15,7 +15,7 @@ export const createAdvertController = async (
     const { name, price, description } = req.body;
     const newAdvert = await createAdvert(
       { name, price, description },
-      (req as any).user.id
+      (req as any).user.email
     );
     return res.status(201).json(newAdvert);
   } catch (error) {
@@ -29,7 +29,7 @@ export const deleteAdvertController = async (
 ): Promise<any> => {
   try {
     const { id } = req.params;
-    const deletedAdvert = await deleteAdvert(id, (req as any).user.id);
+    const deletedAdvert = await deleteAdvert(id, (req as any).user.email);
     return res.status(200).json(deletedAdvert);
   } catch (error) {
     return res.status(500).json({ message: ErrorType.INTERNAL_SERVER_ERROR });
@@ -42,7 +42,7 @@ export const getAdvertController = async (
 ): Promise<any> => {
   try {
     const { id } = req.params;
-    const advert = await getAdvert(id);
+    const advert = await getAdvert(id, (req as any).user.email);
     return res.status(200).json(advert);
   } catch (error) {
     return res.status(500).json({ message: ErrorType.INTERNAL_SERVER_ERROR });
@@ -63,7 +63,7 @@ export const updateAdvertController = async (
         price,
         description,
       },
-      (req as any).user.id
+      (req as any).user.email
     );
     return res.status(200).json(updatedAdvert);
   } catch (error) {

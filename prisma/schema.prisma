@@ -31,8 +31,8 @@ model Adverts {
   name String
   price String
   description String
-  ownerID String
-  owner User @relation("advertOwner", fields:[ownerID],references:[id]) 
+  ownerEmail String 
+  owner User @relation("advertOwner", fields:[ownerEmail],references:[email]) 
 }
 
 model Message {
